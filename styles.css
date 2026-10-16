@@ -20,7 +20,7 @@
 }
 
 body {
-  min-width: 320px;
+  min-width: 0;
   min-height: 100vh;
   margin: 0;
   color: var(--ink);
@@ -115,6 +115,8 @@ h1 {
 
 .progress {
   display: flex;
+  width: 100%;
+  min-width: 0;
   align-items: center;
   margin-bottom: 31px;
 }
@@ -391,9 +393,36 @@ footer {
   }
 
   .booking-card {
+    min-width: 0;
     margin: 32px 0;
     padding: 30px 22px 26px;
     border-radius: 16px;
+  }
+
+  .progress {
+    justify-content: space-between;
+    gap: 3px;
+  }
+
+  .progress-step {
+    flex: 0 0 64px;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 10px;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .step-number {
+    width: 24px;
+    height: 24px;
+    flex: 0 0 auto;
+  }
+
+  .progress-line {
+    min-width: 8px;
+    flex: 1 1 8px;
+    margin: 0;
   }
 }
 
