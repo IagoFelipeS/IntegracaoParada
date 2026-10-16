@@ -2,13 +2,14 @@
 
 :root {
   color-scheme: light;
-  --ink: #172c2a;
-  --muted: #71807d;
-  --green: #16796d;
-  --green-dark: #11685e;
-  --line: #e5ece9;
+  --ink: #20242a;
+  --muted: #707982;
+  --accent: #26818b;
+  --accent-dark: #205b80;
+  --accent-soft: #edf5f8;
+  --line: #e4e8ec;
   --surface: #ffffff;
-  --canvas: #f4f7f6;
+  --canvas: #f6f7f8;
   font-family: "DM Sans", sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -24,7 +25,7 @@ body {
   margin: 0;
   color: var(--ink);
   background:
-    radial-gradient(ellipse at 50% -15%, #e2f0eb 0, transparent 48%),
+    radial-gradient(ellipse at 50% -15%, #e8f1f5 0, transparent 48%),
     var(--canvas);
 }
 
@@ -64,22 +65,22 @@ select {
 }
 
 .brand-dot {
-  color: var(--green);
+  color: var(--accent);
 }
 
 .booking-card {
   width: min(100%, 520px);
   margin: auto 0;
   padding: 40px 44px 38px;
-  border: 1px solid rgba(220, 231, 226, 0.8);
+  border: 1px solid rgba(224, 231, 236, 0.9);
   border-radius: 20px;
   background: var(--surface);
-  box-shadow: 0 22px 70px rgba(29, 60, 51, 0.08);
+  box-shadow: 0 22px 70px rgba(30, 57, 76, 0.09);
 }
 
 .eyebrow {
   margin: 0 0 12px;
-  color: var(--green);
+  color: var(--accent-dark);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 1.6px;
@@ -122,7 +123,7 @@ h1 {
   display: flex;
   align-items: center;
   gap: 9px;
-  color: #96a29f;
+  color: #929aa3;
   font-size: 12px;
   font-weight: 600;
   white-space: nowrap;
@@ -133,21 +134,21 @@ h1 {
   width: 27px;
   height: 27px;
   place-items: center;
-  border: 1px solid #dfe7e4;
+  border: 1px solid #e0e5e9;
   border-radius: 50%;
   background: white;
   font-size: 11px;
 }
 
 .progress-step.is-active {
-  color: var(--green);
+  color: var(--accent-dark);
 }
 
 .progress-step.is-active .step-number,
 .progress-step.is-complete .step-number {
-  border-color: var(--green);
+  border-color: var(--accent);
   color: white;
-  background: var(--green);
+  background: var(--accent);
 }
 
 .progress-line {
@@ -179,7 +180,7 @@ h1 {
 .time-fieldset legend {
   display: block;
   margin-bottom: 8px;
-  color: #344744;
+  color: #343a42;
   font-size: 12px;
   font-weight: 700;
 }
@@ -189,7 +190,7 @@ h1 {
   width: 100%;
   height: 46px;
   padding: 0 13px;
-  border: 1px solid #dfe7e4;
+  border: 1px solid #e0e5e9;
   border-radius: 9px;
   outline: none;
   color: var(--ink);
@@ -199,17 +200,17 @@ h1 {
 }
 
 .field input::placeholder {
-  color: #a6b1ae;
+  color: #9ca5ad;
 }
 
 .field input:focus,
 .field select:focus {
-  border-color: var(--green);
-  box-shadow: 0 0 0 3px rgba(22, 121, 109, 0.11);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(38, 129, 139, 0.13);
 }
 
 .field select:invalid {
-  color: #a6b1ae;
+  color: #9ca5ad;
 }
 
 .field select option {
@@ -232,7 +233,7 @@ h1 {
 
 .button:focus-visible,
 .time-option:focus-within {
-  outline: 3px solid rgba(22, 121, 109, 0.25);
+  outline: 3px solid rgba(38, 129, 139, 0.25);
   outline-offset: 2px;
 }
 
@@ -243,11 +244,11 @@ h1 {
 .button-primary {
   width: 100%;
   color: white;
-  background: var(--green);
+  background: linear-gradient(115deg, #278a8d 0%, #245b85 100%);
 }
 
 .button-primary:hover {
-  background: var(--green-dark);
+  background: linear-gradient(115deg, #21777e 0%, #1d4f75 100%);
 }
 
 .button-primary span {
@@ -286,9 +287,9 @@ h1 {
   align-items: center;
   justify-content: center;
   gap: 5px;
-  border: 1px solid #dfe7e4;
+  border: 1px solid #e0e5e9;
   border-radius: 9px;
-  color: #344744;
+  color: #343a42;
   font-size: 13px;
   font-weight: 700;
   transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
@@ -301,14 +302,14 @@ h1 {
 }
 
 .time-option input:checked + span {
-  border-color: var(--green);
-  color: var(--green-dark);
-  background: #eff8f5;
-  box-shadow: inset 0 0 0 1px var(--green);
+  border-color: var(--accent);
+  color: var(--accent-dark);
+  background: var(--accent-soft);
+  box-shadow: inset 0 0 0 1px var(--accent);
 }
 
 .time-option input:checked + span small {
-  color: var(--green-dark);
+  color: var(--accent-dark);
 }
 
 .button-row {
@@ -365,7 +366,7 @@ h1 {
 
 .form-message {
   margin: 12px 0 0;
-  color: var(--green-dark);
+  color: var(--accent-dark);
   font-size: 12px;
   line-height: 1.5;
 }
