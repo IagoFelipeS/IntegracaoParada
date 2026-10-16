@@ -46,6 +46,7 @@ select {
 .brand {
   display: flex;
   width: min(100%, 1060px);
+  flex-wrap: wrap;
   align-items: center;
   gap: 10px;
   font-family: "Manrope", sans-serif;
@@ -62,6 +63,24 @@ select {
   border-radius: 8px;
   background: #000;
   object-fit: contain;
+}
+
+.admin-nav-button {
+  min-height: 38px;
+  margin-left: auto;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  color: var(--accent-dark);
+  background: white;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.admin-nav-button:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
 }
 
 .brand-dot {
@@ -314,6 +333,21 @@ h1 {
   color: var(--accent-dark);
 }
 
+.time-option.is-booked {
+  cursor: not-allowed;
+}
+
+.time-option input:disabled + span {
+  border-color: #e9ecef;
+  color: #a3aab1;
+  background: #f5f6f7;
+  cursor: not-allowed;
+}
+
+.time-option input:disabled + span small {
+  color: #9ba3aa;
+}
+
 .button-row {
   display: grid;
   grid-template-columns: 0.75fr 1.5fr;
@@ -377,6 +411,131 @@ h1 {
   display: none;
 }
 
+.success-panel {
+  padding: 10px 0 2px;
+  text-align: center;
+}
+
+.success-mark {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 16px;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--accent);
+  font-size: 24px;
+}
+
+.success-panel h2,
+.admin-heading h2 {
+  margin-bottom: 8px;
+  font-family: "Manrope", sans-serif;
+  font-size: 20px;
+  letter-spacing: -0.5px;
+}
+
+.success-panel .button {
+  margin-top: 8px;
+}
+
+.admin-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.admin-heading .eyebrow {
+  margin-bottom: 7px;
+}
+
+.meeting-count {
+  flex: 0 0 auto;
+  padding: 7px 10px;
+  border-radius: 20px;
+  color: var(--accent-dark);
+  background: var(--accent-soft);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.appointment-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.appointment-card {
+  min-width: 0;
+  padding: 15px;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 10px;
+  background: #fff;
+}
+
+.appointment-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 9px;
+}
+
+.appointment-date {
+  color: var(--accent-dark);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.appointment-time {
+  flex: 0 0 auto;
+  padding: 4px 7px;
+  border-radius: 6px;
+  color: var(--accent-dark);
+  background: var(--accent-soft);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.appointment-card h3 {
+  margin: 0 0 4px;
+  font-size: 14px;
+}
+
+.appointment-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.empty-agenda,
+.admin-message {
+  margin: 18px 0 0;
+  padding: 16px;
+  border: 1px dashed var(--line);
+  border-radius: 9px;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+}
+
+.admin-message {
+  border-color: #e7b5ad;
+  color: #9e3326;
+  background: #fff8f6;
+}
+
+.local-demo-note {
+  margin: 16px 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.55;
+}
+
 footer {
   color: #87938f;
   font-size: 11px;
@@ -392,10 +551,26 @@ footer {
     padding: 22px 15px 18px;
   }
 
+  .brand {
+    gap: 8px;
+    font-size: 16px;
+  }
+
+  .brand-logo {
+    width: 48px;
+    height: 48px;
+  }
+
+  .admin-nav-button {
+    min-height: 34px;
+    padding: 0 10px;
+    font-size: 11px;
+  }
+
   .booking-card {
     min-width: 0;
     margin: 32px 0;
-    padding: 30px 22px 26px;
+    padding: 28px 18px 24px;
     border-radius: 16px;
   }
 
@@ -423,6 +598,15 @@ footer {
     min-width: 8px;
     flex: 1 1 8px;
     margin: 0;
+  }
+
+  .admin-heading {
+    align-items: flex-start;
+  }
+
+  .appointment-card-header {
+    flex-direction: column;
+    gap: 6px;
   }
 }
 

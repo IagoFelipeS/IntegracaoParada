@@ -13,16 +13,17 @@
     <header class="brand">
       <img class="brand-logo" src="assets/logo-grupo-arantes.png" alt="Grupo Arantes">
       <span>Integração J.Arantes</span>
+      <button class="admin-nav-button" id="admin-nav-button" type="button">Ver agenda</button>
     </header>
 
     <section class="booking-card" aria-labelledby="page-title">
-      <div class="intro">
+      <div class="intro" id="booking-intro">
         <p class="eyebrow">AGENDAMENTO DE REUNIÃO</p>
         <h1 id="page-title">Vamos encontrar o melhor horário.</h1>
         <p class="intro-copy">Informe seus dados e escolha um horário para conversar com nossa equipe.</p>
       </div>
 
-      <div class="progress" aria-label="Etapa 1 de 3">
+      <div class="progress" id="booking-progress" aria-label="Etapa 1 de 3">
         <div class="progress-step is-active" data-progress-step="1">
           <span class="step-number">1</span>
           <span>Seus dados</span>
@@ -67,26 +68,31 @@
 
         <section class="form-step" data-step="2" aria-labelledby="schedule-title" hidden>
           <h2 id="schedule-title">Escolha um horário</h2>
-          <p class="section-copy">Selecione um horário disponível entre 8h e 10h. Cada reunião dura 30 minutos.</p>
+          <p class="section-copy">Escolha uma data nos próximos 30 dias e um horário disponível. Cada reunião dura 30 minutos.</p>
+
+          <label class="field date-field" for="meeting-date">
+            <span>Data da reunião</span>
+            <input id="meeting-date" name="meetingDate" type="date" required>
+          </label>
 
           <fieldset class="time-fieldset">
             <legend>Horários disponíveis</legend>
             <div class="time-options">
               <label class="time-option">
                 <input type="radio" name="meetingTime" value="08:00 - 08:30" required>
-                <span>08:00 <small>– 08:30</small></span>
+                <span data-time-label>08:00 <small>– 08:30</small></span>
               </label>
               <label class="time-option">
                 <input type="radio" name="meetingTime" value="08:30 - 09:00">
-                <span>08:30 <small>– 09:00</small></span>
+                <span data-time-label>08:30 <small>– 09:00</small></span>
               </label>
               <label class="time-option">
                 <input type="radio" name="meetingTime" value="09:00 - 09:30">
-                <span>09:00 <small>– 09:30</small></span>
+                <span data-time-label>09:00 <small>– 09:30</small></span>
               </label>
               <label class="time-option">
                 <input type="radio" name="meetingTime" value="09:30 - 10:00">
-                <span>09:30 <small>– 10:00</small></span>
+                <span data-time-label>09:30 <small>– 10:00</small></span>
               </label>
             </div>
           </fieldset>
@@ -102,7 +108,7 @@
 
         <section class="form-step" data-step="3" aria-labelledby="confirmation-title" hidden>
           <h2 id="confirmation-title">Confirme seus dados</h2>
-          <p class="section-copy">Confira as informações e o horário antes de enviar a solicitação.</p>
+          <p class="section-copy">Confira as informações e o horário antes de confirmar a solicitação.</p>
 
           <dl class="review-details">
             <div class="review-item">
@@ -118,6 +124,10 @@
               <dd id="review-vehicle"></dd>
             </div>
             <div class="review-item">
+              <dt>Data da reunião</dt>
+              <dd id="review-date"></dd>
+            </div>
+            <div class="review-item">
               <dt>Horário da reunião</dt>
               <dd id="review-time"></dd>
             </div>
@@ -130,11 +140,34 @@
               <span aria-hidden="true">→</span>
             </button>
           </div>
-          <p class="email-note">A confirmação abrirá seu aplicativo de email com os dados preenchidos. Para envio automático, é necessário conectar um serviço de email.</p>
+          <p class="email-note">Demonstração local: ao confirmar, a reunião será salva neste navegador.</p>
         </section>
 
         <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
       </form>
+
+      <section class="success-panel" id="success-panel" aria-labelledby="success-title" hidden>
+        <div class="success-mark" aria-hidden="true">✓</div>
+        <h2 id="success-title">Reunião registrada!</h2>
+        <p class="section-copy">O horário foi adicionado à agenda deste navegador.</p>
+        <button class="button button-primary" id="new-booking-button" type="button">Fazer novo agendamento</button>
+      </section>
+
+      <section class="admin-panel" id="admin-panel" aria-labelledby="admin-title" hidden>
+        <div class="admin-heading">
+          <div>
+            <p class="eyebrow">ÁREA DO RESPONSÁVEL</p>
+            <h2 id="admin-title">Agenda de reuniões</h2>
+          </div>
+          <span class="meeting-count" id="meeting-count">0 reuniões</span>
+        </div>
+        <p class="section-copy">Reuniões registradas neste navegador, nos próximos 30 dias.</p>
+        <div class="appointment-list" id="appointment-list"></div>
+        <p class="empty-agenda" id="empty-agenda">Ainda não há reuniões agendadas.</p>
+        <p class="admin-message" id="admin-message" role="alert" hidden></p>
+        <p class="local-demo-note">Demonstração local: os dados ficam somente neste navegador e não são compartilhados com outros dispositivos.</p>
+        <button class="button button-primary" id="back-to-booking-button" type="button">Voltar ao agendamento</button>
+      </section>
     </section>
 
     <footer>Uma conversa rápida para colocar tudo em movimento.</footer>
