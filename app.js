@@ -5,13 +5,8 @@ const steps = [...document.querySelectorAll("[data-step]")];
 const progressSteps = [...document.querySelectorAll("[data-progress-step]")];
 const message = document.querySelector("#form-message");
 const dateInput = document.querySelector("#meeting-date");
-const adminMessage = document.querySelector("#admin-message");
-const appointmentList = document.querySelector("#appointment-list");
-const emptyAgenda = document.querySelector("#empty-agenda");
-const bookingIntro = document.querySelector("#booking-intro");
 const progress = document.querySelector("#booking-progress");
 const successPanel = document.querySelector("#success-panel");
-const adminPanel = document.querySelector("#admin-panel");
 let bookingComplete = false;
 
 function formatLocalDate(date) {
@@ -148,76 +143,6 @@ function refreshTimeOptions() {
   }
 }
 
-function createAppointmentCard(appointment) {
-  const card = document.createElement("article");
-  card.className = "appointment-card";
-
-  const header = document.createElement("div");
-  header.className = "appointment-card-header";
-
-  const date = document.createElement("span");
-  date.className = "appointment-date";
-  date.textContent = formatDisplayDate(appointment.date);
-
-  const time = document.createElement("span");
-  time.className = "appointment-time";
-  time.textContent = appointment.meetingTime;
-
-  const name = document.createElement("h3");
-  name.textContent = appointment.name;
-
-  const details = document.createElement("p");
-  details.textContent = `${appointment.phone} · ${appointment.vehicle}`;
-
-  header.append(date, time);
-  card.append(header, name, details);
-  return card;
-}
-
-function renderAgenda() {
-  adminMessage.hidden = true;
-  adminMessage.textContent = "";
-  appointmentList.replaceChildren();
-
-  try {
-    const today = formatLocalDate(new Date());
-    const appointments = readAppointments()
-      .filter((appointment) => appointment.date >= today)
-      .sort((first, second) => (
-        first.date.localeCompare(second.date)
-        || first.meetingTime.localeCompare(second.meetingTime)
-      ));
-
-    appointments.forEach((appointment) => {
-      appointmentList.append(createAppointmentCard(appointment));
-    });
-
-    emptyAgenda.hidden = appointments.length > 0;
-    document.querySelector("#meeting-count").textContent = `${appointments.length} ${appointments.length === 1 ? "reunião" : "reuniões"}`;
-  } catch (error) {
-    emptyAgenda.hidden = true;
-    adminMessage.textContent = error.message;
-    adminMessage.hidden = false;
-  }
-}
-
-function showAdmin() {
-  bookingIntro.hidden = true;
-  progress.hidden = true;
-  form.hidden = true;
-  successPanel.hidden = true;
-  adminPanel.hidden = false;
-  renderAgenda();
-}
-
-function showBooking() {
-  adminPanel.hidden = true;
-  bookingIntro.hidden = false;
-  successPanel.hidden = !bookingComplete;
-  form.hidden = bookingComplete;
-  progress.hidden = bookingComplete;
-}
-
 const today = new Date();
 const lastAvailableDay = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 30);
 dateInput.min = formatLocalDate(today);
@@ -320,12 +245,4 @@ document.querySelector("#new-booking-button").addEventListener("click", () => {
   showStep(1);
 });
 
-document.querySelector("#back-to-booking-button").addEventListener("click", () => {
-  window.location.href = window.location.pathname;
-});
-
-if (new URLSearchParams(window.location.search).get("view") === "admin") {
-  showAdmin();
-} else {
-  showBooking();
-}
+successPanel.hidden = !bookingComplete;

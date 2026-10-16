@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f6f7f8">
+  <title>Administração | Integração J.Arantes</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="admin.js" defer></script>
+</head>
+<body>
+  <main class="page-shell">
+    <header class="brand">
+      <img class="brand-logo" src="assets/logo-grupo-arantes.png" alt="Grupo Arantes">
+      <span>Integração J.Arantes</span>
+    </header>
+
+    <section class="booking-card admin-page-card" aria-label="Administração da agenda">
+      <section id="login-view" aria-labelledby="login-title">
+        <p class="eyebrow">ÁREA DO RESPONSÁVEL</p>
+        <h1 id="login-title">Acesse sua agenda</h1>
+        <p class="section-copy">Entre com seu usuário e senha para visualizar as reuniões.</p>
+
+        <form id="login-form">
+          <label class="field" for="admin-username">
+            <span>Usuário</span>
+            <input id="admin-username" name="username" type="text" autocomplete="username" required>
+          </label>
+          <label class="field" for="admin-password">
+            <span>Senha</span>
+            <input id="admin-password" name="password" type="password" autocomplete="current-password" required>
+          </label>
+          <button class="button button-primary login-button" type="submit">Entrar</button>
+          <p class="login-message" id="login-message" role="alert" aria-live="polite"></p>
+        </form>
+
+        <p class="local-demo-note">Acesso de demonstração. Este login não protege dados reais.</p>
+      </section>
+
+      <section class="admin-panel" id="agenda-view" aria-labelledby="admin-title" hidden>
+        <div class="admin-heading">
+          <div>
+            <p class="eyebrow">ÁREA DO RESPONSÁVEL</p>
+            <h2 id="admin-title">Agenda de reuniões</h2>
+          </div>
+          <span class="meeting-count" id="meeting-count">0 reuniões</span>
+        </div>
+        <p class="section-copy">Agendamentos dos próximos 30 dias salvos neste navegador.</p>
+        <div class="appointment-list" id="appointment-list"></div>
+        <p class="empty-agenda" id="empty-agenda">Ainda não há reuniões agendadas.</p>
+        <p class="admin-message" id="admin-message" role="alert" hidden></p>
+        <p class="local-demo-note">Demonstração local: os agendamentos não são compartilhados com outros dispositivos.</p>
+        <div class="admin-actions">
+          <a class="button button-secondary" href="index.html">Voltar ao agendamento</a>
+          <button class="button button-primary" id="logout-button" type="button">Sair</button>
+        </div>
+      </section>
+    </section>
+
+    <footer>Uma conversa rápida para colocar tudo em movimento.</footer>
+  </main>
+</body>
+</html>
