@@ -208,7 +208,6 @@ function showAdmin() {
   successPanel.hidden = true;
   adminPanel.hidden = false;
   renderAgenda();
-  document.querySelector("#admin-nav-button").textContent = "Voltar";
 }
 
 function showBooking() {
@@ -217,7 +216,6 @@ function showBooking() {
   successPanel.hidden = !bookingComplete;
   form.hidden = bookingComplete;
   progress.hidden = bookingComplete;
-  document.querySelector("#admin-nav-button").textContent = "Ver agenda";
 }
 
 const today = new Date();
@@ -226,14 +224,6 @@ dateInput.min = formatLocalDate(today);
 dateInput.max = formatLocalDate(lastAvailableDay);
 dateInput.value = dateInput.min;
 refreshTimeOptions();
-
-document.querySelector("#admin-nav-button").addEventListener("click", () => {
-  if (adminPanel.hidden) {
-    showAdmin();
-  } else {
-    showBooking();
-  }
-});
 
 dateInput.addEventListener("change", () => {
   form.querySelectorAll('input[name="meetingTime"]').forEach((input) => {
@@ -330,4 +320,12 @@ document.querySelector("#new-booking-button").addEventListener("click", () => {
   showStep(1);
 });
 
-document.querySelector("#back-to-booking-button").addEventListener("click", showBooking);
+document.querySelector("#back-to-booking-button").addEventListener("click", () => {
+  window.location.href = window.location.pathname;
+});
+
+if (new URLSearchParams(window.location.search).get("view") === "admin") {
+  showAdmin();
+} else {
+  showBooking();
+}

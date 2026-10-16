@@ -65,24 +65,6 @@ select {
   object-fit: contain;
 }
 
-.admin-nav-button {
-  min-height: 38px;
-  margin-left: auto;
-  padding: 0 14px;
-  border: 1px solid var(--line);
-  border-radius: 9px;
-  color: var(--accent-dark);
-  background: white;
-  cursor: pointer;
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.admin-nav-button:hover {
-  border-color: var(--accent);
-  background: var(--accent-soft);
-}
-
 .brand-dot {
   color: var(--accent);
 }
@@ -559,12 +541,6 @@ footer {
   .brand-logo {
     width: 48px;
     height: 48px;
-  }
-
-  .admin-nav-button {
-    min-height: 34px;
-    padding: 0 10px;
-    font-size: 11px;
   }
 
   .booking-card {
