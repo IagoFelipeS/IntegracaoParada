@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f4f7f6">
+  <title>Agendar reunião | Parada</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="page-shell">
+    <header class="brand">
+      <div class="brand-mark" aria-hidden="true">P</div>
+      <span>Parada<span class="brand-dot">.</span></span>
+    </header>
+
+    <section class="booking-card" aria-labelledby="page-title">
+      <div class="intro">
+        <p class="eyebrow">AGENDAMENTO DE REUNIÃO</p>
+        <h1 id="page-title">Vamos encontrar o melhor horário.</h1>
+        <p class="intro-copy">Informe seus dados e escolha um horário para conversar com nossa equipe.</p>
+      </div>
+
+      <div class="progress" aria-label="Etapa 1 de 2">
+        <div class="progress-step is-active" data-progress-step="1">
+          <span class="step-number">1</span>
+          <span>Seus dados</span>
+        </div>
+        <span class="progress-line" aria-hidden="true"></span>
+        <div class="progress-step" data-progress-step="2">
+          <span class="step-number">2</span>
+          <span>Horário</span>
+        </div>
+      </div>
+
+      <form id="booking-form">
+        <section class="form-step" data-step="1" aria-labelledby="details-title">
+          <h2 id="details-title">Dados do motorista</h2>
+          <p class="section-copy">Preencha seus dados para continuarmos.</p>
+
+          <label class="field" for="driver-name">
+            <span>Nome completo</span>
+            <input id="driver-name" name="name" type="text" autocomplete="name" placeholder="Ex.: João da Silva" required>
+          </label>
+
+          <label class="field" for="driver-phone">
+            <span>Telefone</span>
+            <input id="driver-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(00) 00000-0000" required>
+          </label>
+
+          <label class="field" for="vehicle-type">
+            <span>Tipologia do veículo</span>
+            <input id="vehicle-type" name="vehicleType" type="text" placeholder="Ex.: carro, caminhão, van..." required>
+          </label>
+
+          <button class="button button-primary" type="button" id="continue-button">
+            Avançar
+            <span aria-hidden="true">→</span>
+          </button>
+        </section>
+
+        <section class="form-step" data-step="2" aria-labelledby="schedule-title" hidden>
+          <h2 id="schedule-title">Escolha um horário</h2>
+          <p class="section-copy">Selecione um horário disponível entre 8h e 10h. Cada reunião dura 30 minutos.</p>
+
+          <fieldset class="time-fieldset">
+            <legend>Horários disponíveis</legend>
+            <div class="time-options">
+              <label class="time-option">
+                <input type="radio" name="meetingTime" value="08:00 - 08:30" required>
+                <span>08:00 <small>– 08:30</small></span>
+              </label>
+              <label class="time-option">
+                <input type="radio" name="meetingTime" value="08:30 - 09:00">
+                <span>08:30 <small>– 09:00</small></span>
+              </label>
+              <label class="time-option">
+                <input type="radio" name="meetingTime" value="09:00 - 09:30">
+                <span>09:00 <small>– 09:30</small></span>
+              </label>
+              <label class="time-option">
+                <input type="radio" name="meetingTime" value="09:30 - 10:00">
+                <span>09:30 <small>– 10:00</small></span>
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="button-row">
+            <button class="button button-secondary" type="button" id="back-button">Voltar</button>
+            <button class="button button-primary" type="submit">
+              Confirmar horário
+              <span aria-hidden="true">→</span>
+            </button>
+          </div>
+          <p class="email-note">Ao confirmar, seu aplicativo de email será aberto com os dados da reunião. Você precisará enviar a mensagem.</p>
+        </section>
+
+        <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <footer>Uma conversa rápida para colocar tudo em movimento.</footer>
+  </main>
+</body>
+</html>
