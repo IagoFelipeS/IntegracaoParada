@@ -318,6 +318,35 @@ h1 {
   gap: 10px;
 }
 
+.review-details {
+  margin: 0 0 24px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.review-item {
+  padding: 13px 15px;
+}
+
+.review-item + .review-item {
+  border-top: 1px solid var(--line);
+}
+
+.review-item dt {
+  margin-bottom: 4px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.review-item dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 600;
+}
+
 .button-secondary {
   border: 1px solid var(--line);
   color: #50615d;

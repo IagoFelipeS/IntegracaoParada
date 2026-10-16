@@ -22,7 +22,7 @@
         <p class="intro-copy">Informe seus dados e escolha um horário para conversar com nossa equipe.</p>
       </div>
 
-      <div class="progress" aria-label="Etapa 1 de 2">
+      <div class="progress" aria-label="Etapa 1 de 3">
         <div class="progress-step is-active" data-progress-step="1">
           <span class="step-number">1</span>
           <span>Seus dados</span>
@@ -31,6 +31,11 @@
         <div class="progress-step" data-progress-step="2">
           <span class="step-number">2</span>
           <span>Horário</span>
+        </div>
+        <span class="progress-line" aria-hidden="true"></span>
+        <div class="progress-step" data-progress-step="3">
+          <span class="step-number">3</span>
+          <span>Confirmar</span>
         </div>
       </div>
 
@@ -88,12 +93,44 @@
 
           <div class="button-row">
             <button class="button button-secondary" type="button" id="back-button">Voltar</button>
-            <button class="button button-primary" type="submit">
-              Confirmar horário
+            <button class="button button-primary" type="button" id="review-button">
+              Avançar
               <span aria-hidden="true">→</span>
             </button>
           </div>
-          <p class="email-note">Ao confirmar, seu aplicativo de email será aberto com os dados da reunião. Você precisará enviar a mensagem.</p>
+        </section>
+
+        <section class="form-step" data-step="3" aria-labelledby="confirmation-title" hidden>
+          <h2 id="confirmation-title">Confirme seus dados</h2>
+          <p class="section-copy">Confira as informações e o horário antes de enviar a solicitação.</p>
+
+          <dl class="review-details">
+            <div class="review-item">
+              <dt>Nome do motorista</dt>
+              <dd id="review-name"></dd>
+            </div>
+            <div class="review-item">
+              <dt>Telefone</dt>
+              <dd id="review-phone"></dd>
+            </div>
+            <div class="review-item">
+              <dt>Tipologia do veículo</dt>
+              <dd id="review-vehicle"></dd>
+            </div>
+            <div class="review-item">
+              <dt>Horário da reunião</dt>
+              <dd id="review-time"></dd>
+            </div>
+          </dl>
+
+          <div class="button-row">
+            <button class="button button-secondary" type="button" id="back-to-schedule-button">Voltar</button>
+            <button class="button button-primary" type="submit">
+              Confirmar e preparar email
+              <span aria-hidden="true">→</span>
+            </button>
+          </div>
+          <p class="email-note">A confirmação abrirá seu aplicativo de email com os dados preenchidos. Para envio automático, é necessário conectar um serviço de email.</p>
         </section>
 
         <p class="form-message" id="form-message" role="status" aria-live="polite"></p>

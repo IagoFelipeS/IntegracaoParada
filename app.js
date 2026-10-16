@@ -17,7 +17,7 @@ function showStep(stepNumber) {
     step.classList.toggle("is-complete", number < stepNumber);
   });
 
-  document.querySelector(".progress").setAttribute("aria-label", `Etapa ${stepNumber} de 2`);
+  document.querySelector(".progress").setAttribute("aria-label", `Etapa ${stepNumber} de 3`);
   message.textContent = "";
 }
 
@@ -47,8 +47,31 @@ document.querySelector("#back-button").addEventListener("click", () => {
   showStep(1);
 });
 
+document.querySelector("#review-button").addEventListener("click", () => {
+  const selectedTime = form.querySelector('input[name="meetingTime"]:checked');
+  if (!selectedTime) {
+    form.querySelector('input[name="meetingTime"]').reportValidity();
+    return;
+  }
+
+  const driver = getDriverDetails();
+  document.querySelector("#review-name").textContent = driver.name;
+  document.querySelector("#review-phone").textContent = driver.phone;
+  document.querySelector("#review-vehicle").textContent = driver.vehicle;
+  document.querySelector("#review-time").textContent = driver.meetingTime;
+  showStep(3);
+});
+
+document.querySelector("#back-to-schedule-button").addEventListener("click", () => {
+  showStep(2);
+});
+
 form.addEventListener("submit", (event) => {
   event.preventDefault();
+
+  if (steps.findIndex((step) => !step.hidden) !== 2) {
+    return;
+  }
 
   const selectedTime = form.querySelector('input[name="meetingTime"]:checked');
   if (!selectedTime) {
